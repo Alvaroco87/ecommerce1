@@ -2,7 +2,7 @@
     grid-area: counter;
     padding-top: 12.5px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     width: 250px;
 }

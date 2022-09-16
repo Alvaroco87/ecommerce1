@@ -16,7 +16,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
         }
     };
 
-    const Decrement = () => {
+    const decrement = () => {
         if (count > 1) {
             setCount(count - 1);
         }
@@ -30,7 +30,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     return (
         <div>
             <div className="counter">
-                <IoIosRemoveCircleOutline className="counter-icon" onClick={Decrement} />
+                <IoIosRemoveCircleOutline className="counter-icon" onClick={decrement} />
                 <p className="counter-number">{count}</p>
                 <IoIosAddCircleOutline className="counter-icon" onClick={increment} />
             </div>
