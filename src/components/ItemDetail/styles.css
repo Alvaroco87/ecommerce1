@@ -46,3 +46,17 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.count-container button{
+    padding: 10px 50px;
+    color: #f9f9f9;
+    background: linear-gradient(to right, #3D0000, #3D0000) padding-box, linear-gradient(to right, #950101, #FF0000) border-box;
+    border-radius: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.count-container button:hover{
+    background: linear-gradient(to right, #950101, #FF0000) border-box;
+    transition: all 0.5s ease-in;
+}

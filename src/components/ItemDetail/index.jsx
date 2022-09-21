@@ -1,12 +1,23 @@
 import React from 'react';
+import { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import ItemCount from '../ItemCount';
 import './styles.css';
 
 const ItemDetail = ({ product }) => {
-    const agregarAlCarrito = (cantidad) => {
-        console.log(cantidad);
-        alert(`Se agrego la cantidad ${cantidad} al carrito`);
+
+    const [qty, setQty] = useState(0);
+    const navigate = useNavigate();
+
+    const addCart = (quantity) => {
+        setQty(quantity);
+    };
+
+    const handleFinish = () => {
+        navigate('/cart');
     }
+
+    console.log(qty);
 
     return (
         <div className="detail-container">
@@ -20,7 +31,11 @@ const ItemDetail = ({ product }) => {
                     Precio: {product.price}$
                 </p>
                 <div className='count-container'>
-                <ItemCount initial={1} stock={10} onAdd={agregarAlCarrito} />
+                {qty ? (
+                <button onClick={handleFinish}>Finalizar compra</button>
+                ) : (
+                <ItemCount initial={1} stock={10} onAdd={addCart} />
+                )}
                 </div>
             </div>
         </div>
