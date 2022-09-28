@@ -5,9 +5,12 @@ import './styles.css';
 const ItemList = ({products}) => {
   return (
     <div className='container'>
-        {products.map(product => {
+        {products.length
+        ? products.map(product => {
             return <Item key={product.id} product={product} />
-        })}
+        })
+        : <p>Cargando</p>
+        }
     </div>
   )
 }

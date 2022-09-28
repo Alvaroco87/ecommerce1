@@ -1,0 +1,13 @@
+.cart-totals{
+    width: 100%;
+    max-height: 250px;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    font-size: medium;
+}
+
+.cart-totals p{
+    text-align: center;
+}

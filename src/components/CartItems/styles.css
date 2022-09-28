@@ -1,0 +1,9 @@
+.cart-shop{
+    width: 100%;
+    background-color: #ff000086;
+}
+
+.cart-shop img{
+    max-width: 150px;
+    max-height: 80px;
+}
