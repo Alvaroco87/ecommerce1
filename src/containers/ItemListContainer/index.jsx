@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import ItemList from '../../components/ItemList';
-// import {products} from '../../data/products';
 import { useParams } from 'react-router-dom';
 
-const ItemListContainer = ({greeting}) => {
+import { db } from '../../firebase/config';
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+const ItemListContainer = () => {
 
   const [productos, setProductos] = useState([])
 
@@ -12,30 +14,31 @@ const ItemListContainer = ({greeting}) => {
 
   useEffect(()=> {
     (async ()=> {
-        try {
-          if (categoryId){
-            const response = await fetch(
-              `https://fakestoreapi.com/products/category/${categoryId}`
-            )
-            const productos = await response.json();
-            setProductos(productos);
-          }
-          else {
-            const response = await fetch(
-              "https://fakestoreapi.com/products"
-            );
-            const productos = await response.json();
-            setProductos(productos);
-          }
+      try {
+        const q = categoryId 
+          ? query(
+            collection(db, "products"),
+            where("category", "==", categoryId)
+          )
+          : query(collection(db, "products"));
+
+          const querySnapshot = await getDocs(q);
+          const productosFirebase = [];
+
+          querySnapshot.forEach((doc) => {
+            productosFirebase.push({id: doc.id, ...doc.data()})
+          });
+          
+          setProductos(productosFirebase);
+
         } catch (error) {
           console.log(error);
         }
 
-    })()
+    })();
 
   }, [categoryId])
 
-  console.log(productos);
 
   return (
     <ItemList products={productos}/>

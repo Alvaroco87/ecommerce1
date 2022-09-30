@@ -12,7 +12,9 @@ const NavBar = () => {
                 <li><Link to="/category/women's clothing">Women's clothing</Link></li>
                 <li><Link to="/category/electronics">Electronics</Link></li>
                 <li><Link to="/category/jewelery">Jewelery</Link></li>
-                <CartWidget />
+                <div className='cart-widget'>
+                <Link to="/cart"><CartWidget /></Link>
+                </div>
             </ul>
         </div>
     )
