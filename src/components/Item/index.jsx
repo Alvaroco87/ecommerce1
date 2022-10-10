@@ -1,21 +1,21 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
-import { useNavigate } from "react-router-dom";
-import './styles.css';
+import React from 'react';
+import './styles.scss';
+import {useNavigate} from 'react-router-dom';
 
-const Item = ({ product }) => {
-    const navigate = useNavigate();
+//Corresponde a la card del producto
+const Item = ({product}) => {
+  const navigate = useNavigate();
 
-    const handleNavigate = () => {
-        navigate(`/detail/${product.id}`)
-    }
+  const handleNavigate = () => {
+    navigate(`/detail/${product.id}`)
+  }
 
-    return (
-        <Card className="card-container" onClick={handleNavigate} style={{ width: "18rem" }}>
-            <Card.Img className="card-img" variant="top" src={product.image} />
-            <Card.Title className="card-title">{product.title}</Card.Title>
-        </Card>
-    );
-};
+  return (
+    <div className='card-container' onClick={handleNavigate}>
+      <img className="card-img" src={product.image} width={250} alt="product"/>
+      <h1 className='card-title'>{product.title}</h1>
+    </div>
+  )
+}
 
-export default Item;
+export default Item

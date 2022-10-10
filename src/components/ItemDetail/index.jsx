@@ -1,10 +1,8 @@
-import React from 'react';
-import { useContext } from 'react';
-import { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
-import { Shop } from '../../context/CartContext';
-import ItemCount from '../ItemCount';
-import './styles.css';
+import React, { useContext, useState } from "react";
+import ItemCount from "../ItemCount";
+import { useNavigate } from "react-router-dom";
+import "./styles.scss";
+import { Shop } from "../../context/ShopProvider";
 
 const ItemDetail = ({ product }) => {
 
@@ -20,31 +18,28 @@ const ItemDetail = ({ product }) => {
     const handleFinish = () => {
         const productToSave = {...product, quantity: qty}
         addItem(productToSave)
-        navigate('/cart');
-    }
+        navigate("/cart");
+    };
 
+    console.log(qty);
 
     return (
         <div className="detail-container">
-            <img className="detail-img" alt='product-detail' src={product.image} />
+            <img
+                className="detail-img"
+                src={product.image}
+                alt="product-detail"
+            />
             <div className="detail-subcontainer">
-                <h3 className="product-title">{product.title}</h3>
-                <p className="product-description">
-                    {product.description}
-                </p>
-                <p className="product-price">
-                    Precio: {product.price}$
-                </p>
-                <div className='count-container'>
+                <h1>{product.title}</h1>
                 {qty ? (
-                <button onClick={handleFinish}>Finalizar compra</button>
+                    <button onClick={handleFinish}>Finalizar compra</button>
                 ) : (
-                <ItemCount initial={1} stock={10} onAdd={addCart} />
+                    <ItemCount stock={product.stock} initial={1} onAdd={addCart} />
                 )}
-                </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default ItemDetail;

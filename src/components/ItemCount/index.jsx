@@ -1,45 +1,45 @@
-import React from "react";
-import { useState } from "react";
-import "./styles.css";
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { IoIosRemoveCircleOutline } from "react-icons/io";
-import { BsCartPlusFill } from "react-icons/bs";
+import React, {useState, useEffect} from "react";
+import './styles.css';
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({stock, initial, onAdd}) => {
+
     const [count, setCount] = useState(initial);
 
-    const increment = () => {
-        if (count < stock) {
-            setCount(count + 1);
+    const handleAdd = () => {
+        if(count < stock) {
+            setCount(count+1);
         } else {
-            alert("No hay suficiente stock");
+            alert("No hay suficiente stock disponible");
         }
-    };
+    }
 
-    const decrement = () => {
-        if (count > 1) {
-            setCount(count - 1);
-        }
-    };
+    const handleDecrement = () => {
+        //Desarrollo del decrement
+    }
 
     const addCart = () => {
         onAdd(count);
         setCount(initial);
-    };
+    }
+
+    //Montaje del componente
+    useEffect(()=> {
+        //El array de dependencias vacío implica que el callback se ejecutará cuando se MONTA el componente por UNICA vez.
+        console.log("Se montó el ItemCount");
+    }, []);
+
+    //La función callback dentro del useEffect se ejecutará cuando se MONTE el componente, y cuando se ACTUALICE el valor del count
+    useEffect(()=> {
+        console.log("Se actualiza el estado!")
+    }, [count]);
 
     return (
-        <div>
-            <div className="counter">
-                <IoIosRemoveCircleOutline className="counter-icon" onClick={decrement} />
-                <p className="counter-number">{count}</p>
-                <IoIosAddCircleOutline className="counter-icon" onClick={increment} />
-            </div>
-            <div className="add-cart">
-                <button onClick={addCart}>
-                    Agregar al carrito <BsCartPlusFill />
-                </button>
-            </div>
-        </div>
+    <div>
+        <button onClick={handleDecrement}>-</button>
+        <h2>{count}</h2>
+        <button onClick={handleAdd}>+</button>
+        <button onClick={addCart}>Agregar al carrito</button>
+    </div>
     );
 };
 

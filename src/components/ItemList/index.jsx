@@ -1,16 +1,17 @@
 import React from 'react';
 import Item from '../Item';
-import './styles.css';
+import './styles.scss';
 
 const ItemList = ({products}) => {
+
   return (
-    <div className='container'>
-        {products.length
-        ? products.map(product => {
-            return <Item key={product.id} product={product} />
+    <div className='item-container'>
+        {products.length ? products.map(product => {
+            return <Item key={product.id} product={product}/>
         })
-        : <p>Cargando</p>
-        }
+        :
+        <h2>Loading...</h2>
+      }
     </div>
   )
 }
