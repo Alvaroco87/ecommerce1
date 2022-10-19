@@ -1,0 +1,55 @@
+@use '../../scss/abstracts/variables' as var;
+
+.header {
+  background-color: rgb(129, 51, 219);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 20px;
+  margin-bottom: 200px;
+  font-size: var.$font-size-md;
+  .logo {
+
+    width: 320px;
+    text-decoration: none;
+  }
+  .navbarContainer {
+    width: 320px;
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      li {
+        width: 160px;
+        transition: transform 0.2s ease;
+        font-weight: 500;
+        text-align: center;
+        .link{
+          display: inline-block;
+          line-height: 35px;
+          padding: 6px 8px;
+          text-decoration: none;
+          color: white;
+          letter-spacing: 0.01rem;
+        }
+        .link:hover {
+          text-decoration: none;
+          background-color: rgba(25, 118, 210, 0.04);
+        }
+      }
+    }
+  }
+  .carritoContainer {
+    text-decoration: none;
+    color: white;
+    width: 320px;
+    text-align: end;
+    font-size: 27px;
+    a {
+      display: inline-block;
+    }
+  }
+}

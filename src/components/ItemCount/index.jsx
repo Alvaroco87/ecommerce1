@@ -1,46 +1,42 @@
-import React, {useState, useEffect} from "react";
-import './styles.css';
+import React from 'react';
+import { useState } from 'react';
+import styles from './styles.module.scss';
 
 const ItemCount = ({stock, initial, onAdd}) => {
 
-    const [count, setCount] = useState(initial);
+  const [add, setAdd] = useState(initial);
 
-    const handleAdd = () => {
-        if(count < stock) {
-            setCount(count+1);
-        } else {
-            alert("No hay suficiente stock disponible");
-        }
+  const sumProduct = () => {
+    if(add < stock) {
+      setAdd(add + 1);
+    } else {
+      alert("No tenemos stock suficiente");
     }
+  };
 
-    const handleDecrement = () => {
-        //Desarrollo del decrement
+  const restProduct = () => {
+    if(add > 1) {
+      setAdd(add - 1);
+    } else {
+      alert("no puedes seleccionar menos de 1")
     }
+  };
 
-    const addCart = () => {
-        onAdd(count);
-        setCount(initial);
-    }
+  const addCart = () => {
+    onAdd(add);
+    setAdd(initial);
+  }
 
-    //Montaje del componente
-    useEffect(()=> {
-        //El array de dependencias vacío implica que el callback se ejecutará cuando se MONTA el componente por UNICA vez.
-        console.log("Se montó el ItemCount");
-    }, []);
-
-    //La función callback dentro del useEffect se ejecutará cuando se MONTE el componente, y cuando se ACTUALICE el valor del count
-    useEffect(()=> {
-        console.log("Se actualiza el estado!")
-    }, [count]);
-
-    return (
-    <div>
-        <button onClick={handleDecrement}>-</button>
-        <h2>{count}</h2>
-        <button onClick={handleAdd}>+</button>
-        <button onClick={addCart}>Agregar al carrito</button>
-    </div>
-    );
-};
+  return (
+    <>
+      <div className={styles.addButtons}>
+        <button className={styles.buttons} onClick={sumProduct}>+</button>
+        <p>{add}</p>
+        <button className={styles.buttons} onClick={restProduct}>-</button>
+      </div>
+      <button className={styles.addCartButton} onClick={addCart}>Agregar al carrito</button>
+    </>
+  )
+}
 
 export default ItemCount;

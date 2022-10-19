@@ -1,0 +1,43 @@
+.buttonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+.buttonContainer button {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid #2e0008;
+  background: #2e0008;
+}
+
+.buttonContainer button:last-child {
+  border: 2px solid #8133db;
+  background: #8133db;
+}
+
+.buttonContainer button:last-child:hover {
+  background: #fff;
+  color: #8133db;
+}
+
+.buttonContainer button:hover {
+  background: #fff;
+  color: #2e0008;
+}
+/*# sourceMappingURL=styles.module.css.map */

@@ -1,20 +1,27 @@
 import React from 'react';
-import './styles.scss';
-import {useNavigate} from 'react-router-dom';
+import styles from './styles.module.scss';
+import { useNavigate } from 'react-router-dom';
 
-//Corresponde a la card del producto
 const Item = ({product}) => {
+
+  //creamos una variable para usar el hook useNavigate
   const navigate = useNavigate();
 
+  //navegamos creando una variable usando un hook
+  //hacia el detalle del producto seleccionado
   const handleNavigate = () => {
     navigate(`/detail/${product.id}`)
   }
 
+  //por cada producto aqui devolvemos un Item
   return (
-    <div className='card-container' onClick={handleNavigate}>
-      <img className="card-img" src={product.image} width={250} alt="product"/>
-      <h1 className='card-title'>{product.title}</h1>
-    </div>
+    <div className={styles.cardContainer}>
+      <img className={styles.cardImage} src={product.image} onClick={handleNavigate} width="100%" alt="" />
+      <div className={styles.cardBody}>
+        <h6 className={styles.titleProduct}>{product.title}</h6>
+        <p className={styles.price}>{(product.price).toFixed(2)}$</p>
+      </div>
+  </div>
   )
 }
 

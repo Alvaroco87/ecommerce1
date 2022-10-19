@@ -1,90 +1,34 @@
 import React from "react";
 import CartWidget from "../CartWidget";
-import Select from "../Select";
-import "./styles.css";
-import { useState } from "react";
+import styles from "./style.module.scss";
 import { Link } from "react-router-dom";
-// import { Button } from "@mui/material";
-import AuthContainer from "../../containers/AuthContainer";
+import DropdownMenu from "../DropdownMenu";
+
 
 const NavBar = () => {
-    //Nombre del estado, setNombreDelEstado
-    const [navColor, setNavColor] = useState("#f3f3f3");
-    //Consumimos el context desde la NavBar
-    // const value = useContext(Shop)
 
-    const [loginModal, setLoginModal] = useState(false);
-    const [signupModal, setSignupModal] = useState(false);
-
-    const onChangeColor = (event) => {
-        const color = event.target.value;
-        setNavColor(color);
-    };
-
-    // const handleLogin = () => {
-    //     setLoginModal(true);
-    // };
-
-    // const handleSignup = ()=> {
-    //     setSignupModal(true);
-    // }
-
-    return (
-        <>
-            <ul
-                style={{
-                    backgroundColor: navColor,
-                }}
-            >
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/category/men's clothing">Men's clothing</Link>
-                </li>
-                <li>
-                    <Link to="/category/women's clothing">
-                        Women's clothing
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/category/electronics">Electronics</Link>
-                </li>
-                <li>
-                    <Link to="/category/jewelery">Jewelery</Link>
-                </li>
-                {/* <div className="buttons-container">
-                    <Button
-                        size="medium"
-                        variant="outlined"
-                        onClick={handleLogin}
-                    >
-                        Login
-                    </Button>
-                    <Button
-                        size="medium"
-                        variant="contained"
-                        onClick={handleSignup}
-                    >
-                        Signup
-                    </Button>
-                </div> */}
-                <CartWidget />
-                {/* <span>{value.mensaje}</span> */}
-                <Select handleColor={onChangeColor} />
-            </ul>
-            {(loginModal || signupModal) && (
-                    <AuthContainer
-                        handleClose={() => {
-                            setLoginModal(false);
-                            setSignupModal(false);
-                        }}
-                        login={loginModal}
-                        signUp={signupModal}
-                    />
-                )}
-        </>
-    );
+  return (
+    <>
+      <header className={styles.header}>
+        <div className={styles.logo}>
+          <Link to="/"><h1>Ecommerce</h1></Link>
+        </div>
+        <nav className={styles.navbarContainer}>
+          <ul>
+            <li>
+              <Link to="/" className={styles.link}>INICIO</Link>
+            </li>
+            <li>
+              <DropdownMenu/>
+            </li>
+          </ul>
+        </nav>
+        <div className={styles.carritoContainer }>
+          <Link to="/cart"><CartWidget/></Link>
+        </div>
+      </header>
+    </>
+  );
 };
 
 export default NavBar;

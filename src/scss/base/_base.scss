@@ -1,0 +1,6 @@
+@use '../abstracts/variables' as var;
+
+html, body{
+  font-family: var.$fuente-principal;
+  background-color: var.$color-claro;
+}

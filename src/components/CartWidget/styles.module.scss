@@ -1,0 +1,25 @@
+@use '../../scss/abstracts/variables' as var;
+
+.widgetContainer {
+  display: flex;
+  color: var.$color-oscuro;
+  font-size: var.$font-size-xxl;
+
+  .productsInCart {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var.$font-size-sm;
+    font-weight: 600;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(129, 51, 219);
+    color: white;
+
+    text-align: center;
+    border-radius: 999px;
+  }
+}
