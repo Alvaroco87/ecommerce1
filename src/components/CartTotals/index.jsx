@@ -12,7 +12,7 @@ const CartTotals = () => {
 
   return (
     <aside className={styles.cartTotals}>
-      <p>Total: {totalP.toFixed(2)}€</p>
+      <p>Total: {totalP.toFixed(2)}$</p>
       {totalP > 0 && <Link to="/cart/order"><button className={styles.confirmButton}>Tramitar pedido</button></Link>}
     </aside>
   )
